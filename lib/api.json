@@ -1,0 +1,200 @@
+{
+	"index" : [
+		{
+			"method" : "put",
+			"path" : ["index", "type", "id"],
+			"options" : ["version", "op_type", "routing", "parent", "timestamp", "ttl", "percolate", "consistency", "replication", "refresh", "timeout"],
+			"_comment" : "There is also a _create endpoint, but this is redundant with op_type=create"
+		},
+		{
+			"method" : "post",
+			"path" : ["index", "type"],
+			"options" : ["routing", "parent", "timestamp", "ttl", "percolate", "consistency", "replication", "refresh", "timeout"]
+		}
+	],
+	"delete" : [
+		{
+			"method" : "delete",
+			"path" : ["index", "type", "id"],
+			"options" : ["version", "routing", "parent", "replication", "consistency", "refresh"]
+		}
+	],
+	"get" : [
+		{
+			"method" : "get",
+			"path" : ["index", "type", "id"],
+			"options" : ["realtime", "fields", "routing", "preference", "refresh"]
+		},
+		{
+			"method" : "get",
+			"path" : ["index", "_all", "id"],
+			"options" : ["realtime", "fields", "routing", "preference", "refresh"]
+		}
+	],
+	"head" : [
+		{
+			"method" : "head",
+			"path" : ["index", "type", "id"],
+			"options" : ["realtime", "fields", "routing", "preference", "refresh"]
+		},
+		{
+			"method" : "head",
+			"path" : ["index", "_all", "id"],
+			"options" : ["realtime", "fields", "routing", "preference", "refresh"]
+		}
+	],
+	"multiGet" : [
+		{
+			"method" : "get body",
+			"path" : ["index", "type", "_mget"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["index", "_mget"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["_mget"]
+		}
+	],
+	"update" : [
+		{
+			"method" : "post",
+			"path" : ["index", "type", "id", "_update"],
+			"options" : ["routing", "parent", "timeout", "replication", "consistency", "percolate", "refresh", "fields", "retry_on_conflict"]
+		}
+	],
+	"search" : [
+		{
+			"method" : "get body",
+			"path" : ["index", "type", "_search"],
+			"options" : ["routing"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["index", "_search"],
+			"options" : ["routing"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["_search"],
+			"options" : ["routing"]
+		}
+	],
+	"multiSearch" : [
+		{
+			"method" : "get",
+			"path" : ["index", "type", "_msearch"]
+		},
+		{
+			"method" : "get",
+			"path" : ["index", "_msearch"]
+		},
+		{
+			"method" : "get",
+			"path" : ["_msearch"]
+		}
+	],
+	"percolator" : [
+		{
+			"method" : "put",
+			"path" : ["_percolator", "index", "name"]
+		}
+	],
+	"percolate" : [
+		{
+			"method" : "put body",
+			"path" : ["index", "type", "_percolate"]
+		}
+	],
+	"bulk" : [
+		{
+			"method" : "post",
+			"path" : ["index", "type", "_bulk"]
+		},
+		{
+			"method" : "post",
+			"path" : ["index", "_bulk"]
+		},
+		{
+			"method" : "post",
+			"path" : ["_bulk"]
+		}
+	],
+	"count" : [
+		{
+			"method" : "get body",
+			"path" : ["index", "type", "_count"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["index", "_count"]
+		},
+		{
+			"method" : "get body",
+			"path" : ["_count"]
+		}
+	],
+	"deleteByQuery" : [
+		{
+			"method" : "delete",
+			"path" : ["index", "type", "_query"]
+		},
+		{
+			"method" : "delete",
+			"path" : ["index", "_query"]
+		}
+	],
+	"moreLikeThis" : [
+		{
+			"method" : "get",
+			"path" : ["index", "type", "id", "_mlt"]
+		}
+	],
+	"validate" : [
+		{
+			"method" : "get",
+			"path" : ["index", "type", "_validate/query"]
+		},
+		{
+			"method" : "get",
+			"path" : ["index", "_validate/query"]
+		}
+	],
+	"explain" : [
+		{
+			"method" : "get",
+			"path" : ["index", "type", "id", "_explain"]
+		}
+	],
+
+
+	"aliases" : [
+		{
+			"method" : "post",
+			"path" : ["_aliases"]
+		}
+	],
+	"analyze" : [
+		{
+			"method" : "get",
+			"path" : ["index" , "_analyze"]
+		},
+		{
+			"method" : "get",
+			"path" : ["_analyze"]
+		}
+	],
+	"createIndex" : [
+		{
+			"method" : "put",
+			"path" : ["index"]
+		}
+	],
+	"deleteIndex" : [
+		{
+			"method" : "delete",
+			"path" : ["index"]
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+	"name": "easy-elasticsearch",
+	"description": "",
+	"keywords": ["elasticsearch", "elastic", "search"],
+	"version": "0.0.0",
+	"author": "Ross Johnson <ross@mazira.com>",
+	"contributors": [],
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/rossj/easy-elasticsearch"
+	},
+	"main": "./lib/main.js",
+	"scripts": {
+		"test": "mocha --reporter spec"
+	},
+	"engines": {
+		"node": ">= 0.6.x"
+	},
+	"dependencies": {
+		"lodash" : "1.0.1",
+		"async": ">= 0.1.18"
+	},
+	"devDependencies": {
+		"mocha": "1.5.0",
+		"should": "1.2.0",
+		"nock": "0.13.4"
+	}
+}
