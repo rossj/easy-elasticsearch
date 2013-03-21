@@ -7,7 +7,10 @@ var
 // Project modules
 	elastic = require('./../lib/main.js');
 
-elastic.configure('localhost', 9200, 'testIndex', 'testType', 'testID');
+elastic.configure({
+	localhost : 'localhost',
+	port : 9200
+}, 'testIndex', 'testType', 'testID');
 
 var doc = {
 	blahDoc : 'doc'
