@@ -21,9 +21,4 @@ elastic.index(doc, function(err) {
 	console.log(err);
 });
 
-elastic.index('aaa', doc, function(err) {
-	console.log('Done!');
-	console.log(err);
-});
-
 var elastic2 = new elastic.Client('localhost', 9200, 'test', 'type');
