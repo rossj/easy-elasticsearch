@@ -8,7 +8,7 @@ var
 	elastic = require('./../lib/main.js');
 
 elastic.configure({
-	localhost : 'localhost',
+	hostname : 'localhost',
 	port : 9200
 }, 'testIndex', 'testType', 'testID');
 
@@ -20,5 +20,3 @@ elastic.index(doc, function(err) {
 	console.log('Done!');
 	console.log(err);
 });
-
-var elastic2 = new elastic.Client('localhost', 9200, 'test', 'type');

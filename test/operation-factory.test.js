@@ -6,9 +6,36 @@
  * @name Record Keeper
  */
 
-require('should');
 
-var operationFactory = require('../lib/operation-factory.js');
+var
+	nock = require('nock'),
+	should = require('should'),
+	operationFactory = require('../lib/operation-factory.js');
+
+/**
+ * A simple helper object for generating sequences of mock Rackspace responses
+ * @type {Object}
+ */
+var superNock = {
+	scopes : [],
+	allDone : function () {
+		// Assert that all the scopes are done
+		for ( var i = 0; i < this.scopes.length; i++ ) {
+			this.scopes[i].done();
+		}
+		// Clear all scopes
+		this.scopes = [];
+	},
+	get : function (path, data) {
+		// Setup nock to respond to a good auth request, twice
+		var scope = nock('http://localhost:9200')
+			.get(path)
+			.reply(200, data);
+
+		this.scopes.push(scope);
+		return this;
+	}
+};
 
 describe('checkArgsFactory() resulting function', function () {
 	describe('parameters', function () {
@@ -121,5 +148,55 @@ describe('operationFactory()', function () {
 		(function () {
 			operationFactory([]);
 		}).should.not.throw();
+	});
+});
+
+describe('operationFactory() resulting function', function () {
+	var api = [{
+		"method" : "get",
+		"path" : ["var1", "var2"]
+	}, {
+		"method" : "get",
+		"path" : ["var1"]
+	}];
+	var base = 'http://localhost:9200';
+	var op = operationFactory(api);
+
+	it('should work with multiple endpoints', function() {
+		(function() {
+			op(base, "val1", "val2", "val3");
+		}).should.throw(/^No valid endpoint.*/);
+
+		(function() {
+			op(base, "val1", "val2");
+		}).should.not.throw();
+
+		(function() {
+			op(base, "val1");
+		}).should.not.throw();
+
+		(function() {
+			op(base);
+		}).should.throw(/^No valid endpoint.*/);
+	});
+
+	it('should make the proper http request', function() {
+		// Set up nock to respond to the request
+		var testData = {
+			prop1 : 'data1',
+			prop2 : 'data2'
+		};
+		superNock.get('/val1/val2', testData);
+
+		// Hope the request fires
+		(function() {
+			op(base, "val1", "val2", function(err, data) {
+				should.not.exist(err);
+				should.exist(data);
+				testData.should.eql(data);
+			});
+		}).should.not.throw();
+
+		superNock.allDone();
 	});
 });
