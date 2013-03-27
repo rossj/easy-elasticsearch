@@ -20,3 +20,5 @@ elastic.index(doc, function(err) {
 	console.log('Done!');
 	console.log(err);
 });
+
+console.log(elastic._operations);

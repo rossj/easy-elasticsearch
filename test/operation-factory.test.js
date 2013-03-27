@@ -6,7 +6,6 @@
  * @name Record Keeper
  */
 
-
 var
 	nock = require('nock'),
 	should = require('should'),
