@@ -2,6 +2,7 @@
 
 var
 	_ = require('lodash'),
+	aEndpointGroups = require('./lib/operations.js').endpointGroups,
 	api = require('./lib/api.json');
 
 require('./lib/mixins.js');
@@ -82,10 +83,12 @@ js(function() {
 
 h1('Methods');
 
-_.each(api, function(endpoints, operation) {
-	h2(operation);
-	_.each(endpoints, function(endpoint) {
-		var args = _.whereStartsWithout(endpoint.path, '_');
-		p(operation + '(' + args.join(', ') + ')');
+_.each(aEndpointGroups, function(hEndpoints, sType) {
+	h2(sType);
+	_.each(hEndpoints, function(aEndpoints, sOperation) {
+		_.each(aEndpoints, function(hEndpoint) {
+			var args = _.whereStartsWithout(hEndpoint.path, '_');
+			h3(sOperation + '(' + args.join(', ') + ')');
+		});
 	});
 });
