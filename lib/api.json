@@ -196,5 +196,14 @@
 			"method" : "delete",
 			"path" : ["index"]
 		}
+	],
+
+
+
+	"putMapping" : [
+		{
+			"method" : "put",
+			"path" : ["index", "type", "_mapping"]
+		}
 	]
 }
