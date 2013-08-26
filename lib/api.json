@@ -45,15 +45,15 @@
 	],
 	"multiGet" : [
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "type", "_mget"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "_mget"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["_mget"]
 		}
 	],
@@ -66,17 +66,17 @@
 	],
 	"search" : [
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "type", "_search"],
 			"options" : ["routing"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "_search"],
 			"options" : ["routing"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["_search"],
 			"options" : ["routing"]
 		}
@@ -103,7 +103,7 @@
 	],
 	"percolate" : [
 		{
-			"method" : "put body",
+			"method" : "put",
 			"path" : ["index", "type", "_percolate"]
 		}
 	],
@@ -123,15 +123,15 @@
 	],
 	"count" : [
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "type", "_count"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["index", "_count"]
 		},
 		{
-			"method" : "get body",
+			"method" : "post",
 			"path" : ["_count"]
 		}
 	],
